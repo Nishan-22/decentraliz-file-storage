@@ -31,50 +31,31 @@ This project solves these issues using blockchain and decentralized storage.
 ---
 
 # 🏗️ System Architecture
-               +------------------------------------------------+
-|                    USER                        |
-+----------------------+-------------------------+
-                       |
-                       v
-+------------------------------------------------+
-|              FRONTEND (React)                  |
-|------------------------------------------------|
-| Upload File                                    |
-| View Files                                     |
-| Share Access                                   |
-| Wallet Connection                              |
-+----------------------+-------------------------+
-                       |
-                       v
-+------------------------------------------------+
-|             WALLET (MetaMask)                  |
-|------------------------------------------------|
-| User Authentication                            |
-| Transaction Signing                            |
-+----------------------+-------------------------+
-                       |
-                       v
-+------------------------------------------------+
-|             ETHERS.JS LAYER                    |
-|------------------------------------------------|
-| Smart Contract Interaction                     |
-| Blockchain Read/Write                          |
-+----------------------+-------------------------+
-                       |
-           +-----------+-----------+
-           |                       |
-           v                       v
-+-------------------+   +-------------------------+
-|       IPFS        |   | Ethereum Blockchain     |
-|-------------------|   |-------------------------|
-| Actual File Store |   | Metadata Storage        |
-| CID Generation    |   | Ownership Records       |
-| Decentralized     |   | Access Permissions      |
-+-------------------+   +-------------------------+
-
-
-
----
+                     ┌──────────────────────┐
+                    │        USER          │
+                    │ (MetaMask Wallet)    │
+                    └─────────┬────────────┘
+                              │
+                              ▼
+                    ┌──────────────────────┐
+                    │  React Frontend UI   │
+                    │ (DApp Interface Layer)│
+                    └─────────┬────────────┘
+                              │
+                              ▼
+                    ┌──────────────────────┐
+                    │     Ethers.js        │
+                    │ Blockchain Connector │
+                    └─────────┬────────────┘
+                              │
+        ┌─────────────────────┴─────────────────────┐
+        ▼                                           ▼
+┌──────────────────────┐               ┌──────────────────────┐
+│ Ethereum Blockchain  │               │        IPFS          │
+│ (Smart Contracts)    │               │ (File Storage Layer) │
+│ - File metadata      │               │ - Stores actual files │
+│ - Ownership data     │               │ - Returns CID         │
+└──────────────────────┘               └──────────────────────┘
 
 # ⚙️ Tech Stack
 

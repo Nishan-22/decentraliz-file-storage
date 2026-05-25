@@ -31,32 +31,34 @@ This project solves these issues using blockchain and decentralized storage.
 ---
 
 # 🏗️ System Architecture
-                     ┌──────────────────────┐
-                    │        USER          │
-                    │ (MetaMask Wallet)    │
-                    └─────────┬────────────┘
-                              │
-                              ▼
-                    ┌──────────────────────┐
-                    │  React Frontend UI   │
-                    │ (DApp Interface Layer)│
-                    └─────────┬────────────┘
-                              │
-                              ▼
-                    ┌──────────────────────┐
-                    │     Ethers.js        │
-                    │ Blockchain Connector │
-                    └─────────┬────────────┘
-                              │
-        ┌─────────────────────┴─────────────────────┐
-        ▼                                           ▼
-┌──────────────────────┐               ┌──────────────────────┐
-│ Ethereum Blockchain  │               │        IPFS          │
-│ (Smart Contracts)    │               │ (File Storage Layer) │
-│ - File metadata      │               │ - Stores actual files │
-│ - Ownership data     │               │ - Returns CID         │
-└──────────────────────┘               └──────────────────────┘
-
+                   +------------------------------------------------------+
+|                        USER                          |
+|                (MetaMask Wallet)                    |
++---------------------------+--------------------------+
+                            |
+                            v
++------------------------------------------------------+
+|                  React Frontend (DApp)              |
+|            UI Layer + User Interaction              |
++---------------------------+--------------------------+
+                            |
+                            v
++------------------------------------------------------+
+|                     Ethers.js                       |
+|              Blockchain Interaction Layer           |
++---------------------------+--------------------------+
+                            |
+            +---------------+----------------+
+            |                                |
+            v                                v
++--------------------------+     +--------------------------+
+|  Ethereum Blockchain     |     |           IPFS           |
+|  (Smart Contracts)       |     |  (Decentralized Storage) |
+|--------------------------|     |--------------------------|
+| - File metadata          |     | - Stores actual files    |
+| - Ownership records      |     | - Returns CID            |
+| - Access logic           |     | - Distributed network    |
++--------------------------+     +--------------------------+
 # ⚙️ Tech Stack
 
 ## Frontend

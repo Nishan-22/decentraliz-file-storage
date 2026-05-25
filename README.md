@@ -31,35 +31,22 @@ This project solves these issues using blockchain and decentralized storage.
 ---
 
 # 🏗️ System Architecture
-                   +------------------------------------------------------+
-|                        USER                          |
-|                (MetaMask Wallet)                    |
-+---------------------------+--------------------------+
-                            |
-                            v
-+------------------------------------------------------+
-|                  React Frontend (DApp)              |
-|            UI Layer + User Interaction              |
-+---------------------------+--------------------------+
-                            |
-                            v
-+------------------------------------------------------+
-|                     Ethers.js                       |
-|              Blockchain Interaction Layer           |
-+---------------------------+--------------------------+
-                            |
-            +---------------+----------------+
-            |                                |
-            v                                v
-+--------------------------+     +--------------------------+
-|  Ethereum Blockchain     |     |           IPFS           |
-|  (Smart Contracts)       |     |  (Decentralized Storage) |
-|--------------------------|     |--------------------------|
-| - File metadata          |     | - Stores actual files    |
-| - Ownership records      |     | - Returns CID            |
-| - Access logic           |     | - Distributed network    |
-+--------------------------+     +--------------------------+
-# ⚙️ Tech Stack
+  User selects file
+        |
+        v
+File uploaded to IPFS
+        |
+        v
+CID returned from IPFS
+        |
+        v
+Ethers.js sends CID to smart contract
+        |
+        v
+Solidity stores metadata on blockchain
+        |
+        v
+Frontend fetches and displays data
 
 ## Frontend
 - React.js

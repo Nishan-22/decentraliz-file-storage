@@ -31,32 +31,46 @@ This project solves these issues using blockchain and decentralized storage.
 ---
 
 # 🏗️ System Architecture
-                ┌─────────────────────┐
-                │       User          │
-                │ (MetaMask Wallet)   │
-                └─────────┬───────────┘
-                          │
-                          ▼
-                ┌─────────────────────┐
-                │   React Frontend    │
-                │  (UI / DApp Layer)  │
-                └─────────┬───────────┘
-                          │
-                          ▼
-                ┌─────────────────────┐
-                │     Ethers.js       │
-                │ Blockchain Bridge   │
-                └─────────┬───────────┘
-                          │
-            ┌─────────────┴─────────────┐
-            ▼                           ▼
-
-
-            ┌─────────────────────────┐ ┌─────────────────────────┐
-│ Ethereum Blockchain │ │        IPFS Network │
-│ (Solidity Smart Contract│ │      (Decentralized Storage) │
-│ - Metadata Storage) │ │              - File Storage │
-
+               +------------------------------------------------+
+|                    USER                        |
++----------------------+-------------------------+
+                       |
+                       v
++------------------------------------------------+
+|              FRONTEND (React)                  |
+|------------------------------------------------|
+| Upload File                                    |
+| View Files                                     |
+| Share Access                                   |
+| Wallet Connection                              |
++----------------------+-------------------------+
+                       |
+                       v
++------------------------------------------------+
+|             WALLET (MetaMask)                  |
+|------------------------------------------------|
+| User Authentication                            |
+| Transaction Signing                            |
++----------------------+-------------------------+
+                       |
+                       v
++------------------------------------------------+
+|             ETHERS.JS LAYER                    |
+|------------------------------------------------|
+| Smart Contract Interaction                     |
+| Blockchain Read/Write                          |
++----------------------+-------------------------+
+                       |
+           +-----------+-----------+
+           |                       |
+           v                       v
++-------------------+   +-------------------------+
+|       IPFS        |   | Ethereum Blockchain     |
+|-------------------|   |-------------------------|
+| Actual File Store |   | Metadata Storage        |
+| CID Generation    |   | Ownership Records       |
+| Decentralized     |   | Access Permissions      |
++-------------------+   +-------------------------+
 
 
 
